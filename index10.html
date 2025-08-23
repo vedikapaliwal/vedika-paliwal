@@ -1,0 +1,1086 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Security - Advanced Alarm Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --highlight: #3498db;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .language-switcher {
+            margin-left: 1rem;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switcher button {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .language-switcher button.active {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .bg-light {
+            background-color: var(--light);
+        }
+
+        /* Products Section */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .product-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .product-info .btn {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Video Section */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Features & Benefits */
+        .features, .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card, .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover, .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card i, .benefit-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3, .benefit-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--light);
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #e0e0e0;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+
+        .faq-question.active + .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background: var(--dark);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Language Toggle */
+        .hindi {
+            display: none;
+        }
+
+        .language-active .hindi {
+            display: block;
+        }
+
+        .language-active .english {
+            display: none;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Home<span>Security</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="english">Home</a><a href="#home" class="hindi">होम</a></li>
+                    <li><a href="#products" class="english">Products</a><a href="#products" class="hindi">उत्पाद</a></li>
+                    <li><a href="#gallery" class="english">Gallery</a><a href="#gallery" class="hindi">गैलरी</a></li>
+                    <li><a href="#video" class="english">Video</a><a href="#video" class="hindi">वीडियो</a></li>
+                    <li><a href="#features" class="english">Features</a><a href="#features" class="hindi">फीचर्स</a></li>
+                    <li><a href="#benefits" class="english">Benefits</a><a href="#benefits" class="hindi">फायदे</a></li>
+                    <li><a href="#faq" class="english">FAQ</a><a href="#faq" class="hindi">सवाल-जवाब</a></li>
+                    <li><a href="#contact" class="english">Contact</a><a href="#contact" class="hindi">संपर्क</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button id="enBtn" class="active">EN</button>
+                    <button id="hiBtn">HI</button>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1 class="english">Advanced Home Security Systems</h1>
+            <h1 class="hindi">उन्नत घर सुरक्षा प्रणाली</h1>
+            <p class="english">Protect what matters most with our state-of-the-art security solutions. 24/7 monitoring, smart alerts, and complete peace of mind.</p>
+            <p class="hindi">हमारे अत्याधुनिक सुरक्षा समाधानों के साथ सबसे महत्वपूर्ण चीजों की सुरक्षा करें। 24/7 निगरानी, स्मार्ट अलर्ट और पूर्ण मन की शांति।</p>
+            <a href="#contact" class="btn english">Get Free Consultation</a>
+            <a href="#contact" class="btn hindi">मुफ्त परामर्श प्राप्त करें</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+        <div class="container">
+            <h2 class="section-title english">Our Security Products</h2>
+            <h2 class="section-title hindi">हमारे सुरक्षा उत्पाद</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Wireless Alarm">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="english">Wireless Alarm Systems</h3>
+                        <h3 class="hindi">वायरलेस अलार्म सिस्टम</h3>
+                        <p class="english">Easy installation with no wiring needed. Perfect for homes and small businesses with flexible placement options.</p>
+                        <p class="hindi">बिना वायरिंग के आसान स्थापना। लचीले प्लेसमेंट विकल्पों के साथ घरों और छोटे व्यवसायों के लिए आदर्श।</p>
+                        <a href="#contact" class="btn english">Learn More</a>
+                        <a href="#contact" class="btn hindi">और जानें</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Wired Alarm">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="english">Wired Alarm Systems</h3>
+                        <h3 class="hindi">वायर्ड अलार्म सिस्टम</h3>
+                        <p class="english">Highly reliable and tamper-proof solution ideal for large properties and commercial establishments.</p>
+                        <p class="hindi">बड़ी संपत्तियों और वाणिज्यिक प्रतिष्ठानों के लिए अत्यधिक विश्वसनीय और छेड़छाड से सुरक्षित समाधान।</p>
+                        <a href="#contact" class="btn english">Learn More</a>
+                        <a href="#contact" class="btn hindi">और जानें</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1590664863685-b8d762483b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Smart Alarm">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="english">Smart Alarm Systems</h3>
+                        <h3 class="hindi">स्मार्ट अलार्म सिस्टम</h3>
+                        <p class="english">Control and monitor your security from anywhere using your smartphone with real-time alerts and automation.</p>
+                        <p class="hindi">रीयल-टाइम अलर्ट और स्वचालन के साथ अपने स्मार्टफोन का उपयोग करके कहीं से भी अपनी सुरक्षा को नियंत्रित और निगरानी करें।</p>
+                        <a href="#contact" class="btn english">Learn More</a>
+                        <a href="#contact" class="btn hindi">और जानें</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title english">Our Installations</h2>
+            <h2 class="section-title hindi">हमारी स्थापनाएं</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Installation 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Installation 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1590664863685-b8d762483b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Installation 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600011689032-8b628b8a8747?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Installation 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Installation 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Installation 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" class="section">
+        <div class="container">
+            <h2 class="section-title english">How Our System Works</h2>
+            <h2 class="section-title hindi">हमारी प्रणाली कैसे काम करती है</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/_OeB4SD6ir0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title english">Key Features</h2>
+            <h2 class="section-title hindi">मुख्य विशेषताएं</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-walking"></i>
+                    <h3 class="english">Motion Detection</h3>
+                    <h3 class="hindi">गति पहचान</h3>
+                    <p class="english">Advanced sensors detect any movement in protected areas and trigger immediate alerts.</p>
+                    <p class="hindi">उन्नत सेंसर संरक्षित क्षेत्रों में किसी भी हलचल का पता लगाते हैं और तत्काल अलर्ट ट्रिगर करते हैं।</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-door-open"></i>
+                    <h3 class="english">Door/Window Sensors</h3>
+                    <h3 class="hindi">दरवाजे/खिड़की सेंसर</h3>
+                    <p class="english">Instant notification when doors or windows are opened without authorization.</p>
+                    <p class="hindi">बिना अधिकार के दरवाजे या खिड़कियों के खुलने पर तत्काल सूचना।</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-desktop"></i>
+                    <h3 class="english">24/7 Monitoring</h3>
+                    <h3 class="hindi">24/7 निगरानी</h3>
+                    <p class="english">Professional monitoring center alerts authorities in case of any security breach.</p>
+                    <p class="hindi">पेशेवर निगरानी केंद्र किसी भी सुरक्षा उल्लंघन की स्थिति में अधिकारियों को सतर्क करता है।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="section">
+        <div class="container">
+            <h2 class="section-title english">Why Choose Our System?</h2>
+            <h2 class="section-title hindi">हमारी प्रणाली क्यों चुनें?</h2>
+            <div class="benefits">
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3 class="english">Enhanced Protection</h3>
+                    <h3 class="hindi">उन्नत सुरक्षा</h3>
+                    <p class="english">Deter burglars and intruders with visible security measures and loud alarms.</p>
+                    <p class="hindi">दृश्यमान सुरक्षा उपायों और जोरदार अलार्म के साथ चोरों और घुसपैठियों को रोकें।</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3 class="english">Crime Prevention</h3>
+                    <h3 class="hindi">अपराध निवारण</h3>
+                    <p class="english">Homes with security systems are 3x less likely to be targeted by burglars.</p>
+                    <p class="hindi">सुरक्षा प्रणाली वाले घरों को चोरों द्वारा लक्षित होने की संभावना 3 गुना कम होती है।</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3 class="english">Peace of Mind</h3>
+                    <h3 class="hindi">मन की शांति</h3>
+                    <p class="english">Know your home and loved ones are protected even when you're away.</p>
+                    <p class="hindi">जानें कि आपके घर और प्रियजनों की सुरक्षा तब भी होती है जब आप दूर हों।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title english">Frequently Asked Questions</h2>
+            <h2 class="section-title hindi">अक्सर पूछे जाने वाले प्रश्न</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-question english">How long does installation take?<i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-question hindi">स्थापना में कितना समय लगता है?<i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer english">Most standard installations are completed within 2-4 hours. More complex systems for larger properties may take up to a full day.</div>
+                    <div class="faq-answer hindi">अधिकांश मानक स्थापनाएं 2-4 घंटे के भीतर पूरी हो जाती हैं। बड़ी संपत्तियों के लिए अधिक जटिल सिस्टम में पूरा एक दिन लग सकता है।</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question english">Is there a monthly monitoring fee?<i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-question hindi">क्या मासिक निगरानी शुल्क है?<i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer english">We offer both self-monitored and professionally monitored options. Professional monitoring starts at ₹499/month.</div>
+                    <div class="faq-answer hindi">हम स्व-निगरानी और पेशेवर रूप से निगरानी दोनों विकल्प प्रदान करते हैं। पेशेवर निगरानी ₹499/माह से शुरू होती है।</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question english">Can I install the system myself?<i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-question hindi">क्या मैं सिस्टम को स्वयं स्थापित कर सकता हूँ?<i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer english">Our wireless systems are designed for easy DIY installation, but we recommend professional installation for optimal performance.</div>
+                    <div class="faq-answer hindi">हमारे वायरलेस सिस्टम आसान DIY स्थापना के लिए डिज़ाइन किए गए हैं, लेकिन हम इष्टतम प्रदर्शन के लिए पेशेवर स्थापना की सलाह देते हैं।</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question english">What happens during a power outage?<i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-question hindi">बिजली कटौती के दौरान क्या होता है?<i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer english">All our systems include battery backup that lasts for 24-48 hours during power failures.</div>
+                    <div class="faq-answer hindi">हमारे सभी सिस्टम में बैटरी बैकअप शामिल है जो बिजली कटौती के दौरान 24-48 घंटे तक चलता है।</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title english">Contact Us Today</h2>
+            <h2 class="section-title hindi">आज ही हमसे संपर्क करें</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 class="english">Get in Touch</h3>
+                    <h3 class="hindi">संपर्क करें</h3>
+                    <!-- UPDATED CONTACT INFORMATION -->
+                    <p><i class="fas fa-map-marker-alt"></i> Vandana Market, Naya Road, Nathdwara, Rajsamand, Rajasthan</p>
+                    <p><i class="fas fa-phone"></i> +91 8005961536</p>
+                    <p><i class="fas fa-envelope"></i> manishpaliwal1206@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 7:00 PM</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="english">Your Name</label>
+                            <label for="name" class="hindi">आपका नाम</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="english">Email Address</label>
+                            <label for="email" class="hindi">ईमेल पता</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="english">Phone Number</label>
+                            <label for="phone" class="hindi">फोन नंबर</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="english">Your Message</label>
+                            <label for="message" class="hindi">आपका संदेश</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn english">Send Message</button>
+                        <button type="submit" class="btn hindi">संदेश भेजें</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="english">Home Security</h3>
+                    <h3 class="hindi">होम सिक्योरिटी</h3>
+                    <p class="english">Protecting homes and families since 2010 with reliable, cutting-edge security solutions.</p>
+                    <p class="hindi">2010 से विश्वसनीय, अत्याधुनिक सुरक्षा समाधानों के साथ घरों और परिवारों की सुरक्षा करना।</p>
+                </div>
+                <div class="footer-column">
+                    <h3 class="english">Quick Links</h3>
+                    <h3 class="hindi">त्वरित लिंक</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="english">Home</a><a href="#home" class="hindi">होम</a></li>
+                        <li><a href="#products" class="english">Products</a><a href="#products" class="hindi">उत्पाद</a></li>
+                        <li><a href="#features" class="english">Features</a><a href="#features" class="hindi">फीचर्स</a></li>
+                        <li><a href="#contact" class="english">Contact</a><a href="#contact" class="hindi">संपर्क</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="english">Products</h3>
+                    <h3 class="hindi">उत्पाद</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="english">Wireless Alarms</a><a href="#" class="hindi">वायरलेस अलार्म</a></li>
+                        <li><a href="#" class="english">Wired Systems</a><a href="#" class="hindi">वायर्ड सिस्टम</a></li>
+                        <li><a href="#" class="english">Smart Security</a><a href="#" class="hindi">स्मार्ट सुरक्षा</a></li>
+                        <li><a href="#" class="english">Commercial Systems</a><a href="#" class="hindi">वाणिज्यिक सिस्टम</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="english">&copy; 2023 Home Security. All Rights Reserved.</p>
+                <p class="hindi">&copy; 2023 होम सिक्योरिटी। सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                question.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                if (question.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = '0';
+                }
+                
+                // Close other open FAQs
+                faqQuestions.forEach(q => {
+                    if (q !== question && q.classList.contains('active')) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.style.maxHeight = '0';
+                    }
+                });
+            });
+        });
+
+        // Language Switcher
+        const enBtn = document.getElementById('enBtn');
+        const hiBtn = document.getElementById('hiBtn');
+
+        enBtn.addEventListener('click', () => {
+            document.body.classList.remove('language-active');
+            enBtn.classList.add('active');
+            hiBtn.classList.remove('active');
+        });
+
+        hiBtn.addEventListener('click', () => {
+            document.body.classList.add('language-active');
+            hiBtn.classList.add('active');
+            enBtn.classList.remove('active');
+        });
+
+        // Smooth Scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send this data to a server
+            console.log('Form submitted:', { name, email, phone, message });
+            
+            // Show success message
+            if (document.body.classList.contains('language-active')) {
+                alert('धन्यवाद! आपका संदेश सफलतापूर्वक भेज दिया गया है। हम जल्द ही आपसे संपर्क करेंगे।');
+            } else {
+                alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+            }
+            
+            // Reset form
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
