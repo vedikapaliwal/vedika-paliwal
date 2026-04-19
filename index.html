@@ -1079,29 +1079,36 @@
         });
 
         // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-            
-            // Here you would typically send this data to a server
-            console.log('Form submitted:', { name, email, phone, message });
-            
-            // Show success message
-            if (document.body.classList.contains('language-active')) {
-                alert('धन्यवाद! आपका संदेश सफलतापूर्वक भेज दिया गया है। हम जल्द ही आपसे संपर्क करेंगे।');
-            } else {
-                alert('Thank you! Your message has been sent successfully. We will contact you soon.');
-            }
-            
-            // Reset form
-            contactForm.reset();
-        });
+          const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Form data
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const message = document.getElementById('message').value;
+
+    // Your WhatsApp number
+    const whatsappNumber = "7597140722";
+
+    // Message format
+    const text = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AMessage: ${message}`;
+
+    // Open WhatsApp with message
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+
+    // Success message
+    if (document.body.classList.contains('language-active')) {
+        alert('धन्यवाद! आपका संदेश WhatsApp पर भेज दिया गया है।');
+    } else {
+        alert('Thank you! Your message has been sent to WhatsApp.');
+    }
+
+    // Reset form
+    contactForm.reset();
+});
     </script>
 </body>
 </html>
